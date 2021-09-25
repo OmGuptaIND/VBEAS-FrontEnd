@@ -1,0 +1,7 @@
+export const CartActionType = {
+    SET_CART_SHOW: "SET_CART_SHOW",
+    ADD_ITEM: "ADD_ITEM",
+    REMOVE_CART_ITEM: "REMOVE_CART_ITEM",
+    DECREASE_ITEM: "DECREASE_ITEM",
+    EMPTY_CART : 'EMPTY_CART'
+};

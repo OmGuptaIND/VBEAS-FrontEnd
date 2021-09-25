@@ -1,0 +1,1 @@
+export const Subjects = ['CSE', "CCE", "ECE", "MME", "Physics", "HSS", "Mathematics", "General Interest Books"]
