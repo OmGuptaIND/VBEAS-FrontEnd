@@ -1,20 +1,17 @@
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { CLIENT_LINK } from "../../Utils/constants";
-import useWindowDimensions from "../../Hooks/useDimensions";
-import { useDispatch } from 'react-redux';
+import ImageWithFallback from "../ImageWithFallBack/ImageWithFallBack";
 
 export default function BookCard(props) {
-    const { width } = useWindowDimensions();
     const history = useHistory();
     const handleClick = () => {
         history.push(`book/${id}`)
     }
-    const {price_denomination, publisher, image, subject, title, author, price, expected_price, discount, id, medium} = props;
+    const {price_denomination, publisher, image, subject, title, author, price, expected_price, discount, id, medium, seller_id} = props;
     return (
         <Container onClick = {handleClick} >
             <ImageContainer>
-                <img src={image} alt='err' />
+                <ImageWithFallback src={image} alt='err' />
             </ImageContainer>
             <BookDetails>
                 <p>{subject}</p>
@@ -30,7 +27,7 @@ export default function BookCard(props) {
                     <Discount>{discount}% off</Discount>
                 </PriceContainer>
             </BookDetails>
-            {medium === 'electronic' && (<EbookValue>E-Book</EbookValue>)}
+            {(medium === 'electronic' || seller_id === 3) && (<EbookValue>E-Book</EbookValue>)}
         </Container>
     );
 }

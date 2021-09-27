@@ -5,12 +5,14 @@ import styled from 'styled-components';
 
 export default function SellerBigger() {
     return (
-        <Container>
-            <Title>Virtual Stalls</Title>
-            <GridWrapper>
-                {StallsData?.map( item => <StallsCard key={item.id} {...item} /> )}
-            </GridWrapper>
-        </Container>
+        <div id = 'stalls' >
+            <Container>
+                <Title>Virtual Stalls</Title>
+                <GridWrapper>
+                    {StallsData?.map( item => <StallsCard key={item.id} {...item} /> )}
+                </GridWrapper>
+            </Container>
+        </div>
     )
 }
 

@@ -1,34 +1,16 @@
 import styled from "styled-components";
 import Tooltip from "@mui/material/Tooltip";
 import ExternalImg from '../../Images/cart/external.png';
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import api from "../../api/api";
 import { CLIENT_LINK } from "../../Utils/constants";
 
 
 export default function RecommendationCard(props) {
-    const user = useSelector( state => state.user );
     const {book_id, id, title, author, seller, subject, medium, price, price_denomination, qty} = props;
     let total = price * qty;
     const handleClick = (id) => {
         window.open(`${CLIENT_LINK}/#/book/${id}`);
     };
-    useEffect(() => {
-        const fetchData = async() => {
-            const data = {
-                'email' : user?.email,
-                'name' : user?.full_name
-            }
-            await api.post( 'recommendations/', data )
-            .then( res => {
-                const data = res.data;
-                console.log(data)
-            } )
-            .catch( err => console.log(err))
 
-        }
-    }, [])
     return (
         <Card>
             <Details>

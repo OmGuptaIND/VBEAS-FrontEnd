@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components"
 import AdminHeading from "../../../Components/AdminHeading/AdminHeading";
-import { Subjects } from "../../../Data/ComponentsData";
 import StallsData from "../../../Data/StallsData";
 import ViewBooksCard from "./ViewBooksCard";
 

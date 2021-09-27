@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 import { logOutUser } from "../../redux/user/user.actions";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 import Cart from "../../Images/Profile/cart.png";
 import Order from "../../Images/Profile/order.png";
 import Recommend from "../../Images/Profile/recommend.png";
@@ -34,11 +33,11 @@ export default function Profile() {
                 </CartButton>
             </Tooltip>
 
-            <Tooltip title='Personal Purchase Books' arrow>
+            { user?.userCode < 4 && (<Tooltip title='Personal Purchase Books' arrow>
                 <OrdersButton onClick={() => history.push("/personal")} >
                     <img src={Order} alt='err' />
                 </OrdersButton>
-            </Tooltip>
+            </Tooltip>)}
             <Tooltip title='Library Recommendations' arrow>
                 <RecommendedButton onClick={() => history.push("/recommended")} >
                     <img src={Recommend} alt='err' />

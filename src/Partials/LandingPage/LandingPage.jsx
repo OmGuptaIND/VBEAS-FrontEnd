@@ -4,6 +4,10 @@ import BackImg from "../../Images/main/landingImage.jpeg";
 import { Link } from "react-scroll";
 
 export default function LandingPage() {
+    const handleClick = () => {
+        const docLink = "https://docs.google.com/document/d/1zOuTEnj2NiCWToWBlxLKHHC8pAUDIRGy/edit?usp=sharing&ouid=111491908595166621475&rtpof=true&sd=true";
+        window.open(docLink);
+    }
     return (
         <Container img={BackImg}>
             <Wrapper>
@@ -35,7 +39,7 @@ export default function LandingPage() {
                             Explore Stalls
                         </Link>
                     </ButtonStyled>
-                    <ButtonStyled> Instructions </ButtonStyled>
+                    <ButtonStyled onClick = {handleClick} > Instructions </ButtonStyled>
                 </ButtonContainer>
             </Wrapper>
         </Container>
@@ -124,6 +128,7 @@ const ButtonStyled = styled.button`
     color: white;
     font-family: var(--font-text);
     letter-spacing: 2px;
+    cursor: pointer;
 
     @media ${devicesSmall.laptop} {
         margin-top: 15px;

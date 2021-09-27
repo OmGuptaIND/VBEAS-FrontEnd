@@ -32,6 +32,7 @@ function App() {
       if( data ) dispatch(setCurrentUser(data)); // eslint-disable-next-line
       setLoading(false);
     }
+    else setLoading(false);
   }, [])
   if (loading) return <Loading />
   return (
@@ -55,6 +56,8 @@ function App() {
                     }
                   }} />
                   <Route path='/' exact component={Home} />
+
+                  <Route path = '*' render = {(props) => <Redirect to = '/' />} />
               </Switch>
               <ToastContainer
                   position='bottom-center'

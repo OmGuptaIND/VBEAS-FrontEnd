@@ -26,7 +26,7 @@ export default function ViewBooksCard({type, heading, seller}) {
                     console.log(err)
                 })
             }
-            if (seller == 0){
+            if (seller === 0){
                 const req = `admin/books/action/${type}`;
                 await api.get(req)
                 .then( res => {

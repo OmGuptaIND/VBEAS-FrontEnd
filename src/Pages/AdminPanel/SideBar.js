@@ -1,7 +1,6 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components"
 export default function SideBar({match}) {
-    const history = useHistory();
     return (
         <Container>
             <LinksContainer>
@@ -37,17 +36,6 @@ const Container = styled.div`
     flex-direction: column;
 `;
 
-const ImageContainer = styled.div`
-    width: 100%;
-    height: 110px;
-    >img{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-    border-bottom: 2px solid black;
-    margin-bottom: 30px;
-`;
 const LinksContainer = styled.div`
     text-align: start;
     width: 100%;

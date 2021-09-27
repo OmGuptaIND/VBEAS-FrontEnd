@@ -76,14 +76,14 @@ export default function Stall() {
     useEffect(() => {
         // setLoading(true);
         const fetchBooks = async () => {
-            await api
-                .post("stalls/", context)
+            await api // eslint-disable-next-line
+                .post("stalls/", context) // eslint-disable-next-line
                 .then((res) => {
                     const data = res.data;
                     setCount(data.count);
                     setBooks(data.data);
-                    setTotalPage(data.total_page);
-                    setPage(page_number);
+                    setTotalPage(data.total_page); // eslint-disable-next-line
+                    setPage(page_number); // eslint-disable-next-line
                     setLoading(false);
                 })
                 .catch((err) => {
@@ -94,7 +94,7 @@ export default function Stall() {
                 });
         };
         fetchBooks();
-    }, [page, page, qid, filter_by_subject, sort_by, order_by, medium]);
+    }, [page, page, qid, filter_by_subject, sort_by, order_by, medium]); // eslint-disable-next-line
 
     if (loading) return <Loading />;
     return (

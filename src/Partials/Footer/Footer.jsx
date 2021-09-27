@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Logo from "../../Images/main/logo.png";
 import { device } from "../../devices";
-import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -10,8 +8,6 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 export default function Footer() {
-    const history = useHistory();
-    const user = useSelector((state) => state.user);
     return (
         <>
         <Container>

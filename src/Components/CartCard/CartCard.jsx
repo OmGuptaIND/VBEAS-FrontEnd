@@ -7,6 +7,7 @@ import ExternalImg from '../../Images/cart/external.png';
 import { useDispatch } from "react-redux";
 import { addCartItem, decreaseItem, removeCartItem } from "../../redux/cart/cart.actions";
 import { toast } from "react-toastify";
+import { CLIENT_LINK } from "../../Utils/constants";
 
 
 export default function CartCard(props) {
@@ -36,6 +37,9 @@ export default function CartCard(props) {
         toast.success(`Item Successfully removed from the Cart`)
         dispatch( removeCartItem( item ) )
     }
+    const handleClick = () => {
+        window.open(`${CLIENT_LINK}/#/book/${id}`);
+    };
     return (
         <Item>
             <Details>
@@ -81,7 +85,7 @@ export default function CartCard(props) {
             </Pricing>
 
             <Tooltip title='View Book' arrow>
-                <ExternalLink>
+                <ExternalLink onClick = {handleClick} >
                     <img src={ExternalImg} alt='err' />
                 </ExternalLink>
             </Tooltip>

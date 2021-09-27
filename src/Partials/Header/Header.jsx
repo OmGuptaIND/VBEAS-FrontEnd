@@ -1,18 +1,28 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import SearchComponent from "../../Components/SearchComponent/SearchComponent";
 import Logo from "../../Images/main/logo.png";
 import useWindowDimensions from "../../Hooks/useDimensions";
 import { device } from "../../devices";
-// import DrawerComponent from "../DrawerComponent/DrawerComponent";
 import { Link } from "react-scroll";
 import Login from "../../Components/Login/Login";
 import Profile from "../../Components/Profie/Profile";
 import { useSelector } from "react-redux";
+
+
 export default function Header() {
     const user = useSelector(state => state.user);
     const history = useHistory();
+    const location = useLocation();
     const { width } = useWindowDimensions();
+    const handleClick = () => {
+        if( location.pathname === '/' ) return;
+        else history.push('/');
+    }
+    const handleDocClick = () => {
+        const docLink = "https://docs.google.com/document/d/1zOuTEnj2NiCWToWBlxLKHHC8pAUDIRGy/edit?usp=sharing&ouid=111491908595166621475&rtpof=true&sd=true";
+        window.open(docLink);
+    }
     return (
         <Wrapper>
             <Container>
@@ -20,8 +30,8 @@ export default function Header() {
                     <img src={Logo} alt='logo' />
                 </LogoContainer>
                 <InfoContainer>
-                    <Link to='stalls' spy={true} smooth={true} ><p>Stalls</p></Link>
-                    <p>Instructions</p>
+                    <Link to='stalls' spy={true} smooth={true} ><p onClick = {handleClick} >Stalls</p></Link>
+                    <p onClick = {handleDocClick} >Instructions</p>
                 </InfoContainer>
                 { width > 1010 && <SearchComponent />}
                 <LoginContainer>

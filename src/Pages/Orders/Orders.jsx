@@ -64,6 +64,7 @@ export default function Orders() {
                         <Loading />
                     ) : (
                         <>
+                            {currentItems?.length === 0 && <div>Nothing Found</div>}
                             {currentItems?.map((item) => (
                                 <OrdersCard key={item?.id} {...item} />
                             ))}

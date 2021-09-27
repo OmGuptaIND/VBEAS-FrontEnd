@@ -73,7 +73,7 @@ export default function ExportPersonal() {
                                 ))}
                             </CustomSelect>
                         </DropDownContainer>
-                        {subject.length > 0 && seller == 0 && (
+                        {subject.length > 0 && seller === 0 && (
                             <a
                                 href={`${SERVER_LINK}/api/admin/2/excel/subject/${subject}`}
                                 download>
@@ -83,7 +83,7 @@ export default function ExportPersonal() {
                             </a>
                         )}
 
-                        {subject.length == 0 && seller > 0 && (
+                        {subject.length === 0 && seller > 0 && (
                             <a
                                 href={`${SERVER_LINK}/api/admin/2/excel/seller/${seller}`}
                                 download>

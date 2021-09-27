@@ -2,9 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import StallsData from "../../Data/StallsData";
 
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import IconButton from '@mui/material/IconButton';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import IconButton from "@mui/material/IconButton";
 import { useHistory } from "react-router";
 
 export default function Sellers() {
@@ -18,32 +18,50 @@ export default function Sellers() {
     };
 
     return (
-        <Container>
-            <Title>Virtual Stalls</Title>
-            <SellerComponent>
-                {StallsData?.map((item, index) => (
-                    <Slide
-                        key={item?.id}
-                        style={{
-                            marginLeft:
-                                index === 0 ? `-${crr * 100}%` : undefined,
-                        }}>
-                        <Card>
-                            <ImageContainer>
-                                <img src={item?.logo} alt='err' />
-                            </ImageContainer>
-                            <Name>{item?.name}</Name>
-                            <Button onClick = {() => history.push(`/stalls?qid=${item?.id}&page_number=1`)} >Visit Stall</Button>
-                        </Card>
-                    </Slide>
-                ))}
-            </SellerComponent>
-            <ButtonCluster>
-                <IconButton><ChevronLeftIcon onClick = {PrevSeller}  style = {{marginRight : '3px'}} fontSize = 'large' /></IconButton>
-                <p>{crr + 1}/9</p>
-                <IconButton><ChevronRightIcon onClick = {NextSeller} fontSize = 'large' /></IconButton>
-            </ButtonCluster>
-        </Container>
+        <div id='stalls'>
+            <Container>
+                <Title>Virtual Stalls</Title>
+                <SellerComponent>
+                    {StallsData?.map((item, index) => (
+                        <Slide
+                            key={item?.id}
+                            style={{
+                                marginLeft:
+                                    index === 0 ? `-${crr * 100}%` : undefined,
+                            }}>
+                            <Card>
+                                <ImageContainer>
+                                    <img src={item?.logo} alt='err' />
+                                </ImageContainer>
+                                <Name>{item?.name}</Name>
+                                <Button
+                                    onClick={() =>
+                                        history.push(
+                                            `/stalls?qid=${item?.id}&page_number=1`
+                                        )
+                                    }>
+                                    Visit Stall
+                                </Button>
+                            </Card>
+                        </Slide>
+                    ))}
+                </SellerComponent>
+                <ButtonCluster>
+                    <IconButton onClick={PrevSeller} >
+                        <ChevronLeftIcon
+                            style={{ marginRight: "3px" }}
+                            fontSize='large'
+                        />
+                    </IconButton>
+                    <p>{crr + 1}/9</p>
+                    <IconButton onClick={NextSeller} >
+                        <ChevronRightIcon
+                            fontSize='large'
+                        />
+                    </IconButton>
+                </ButtonCluster>
+            </Container>
+        </div>
     );
 }
 

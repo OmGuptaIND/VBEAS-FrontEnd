@@ -10,6 +10,7 @@ import { device } from "../../devices";
 import Footer from "../../Partials/Footer/Footer";
 import CustomPurchaseButton from "../../Components/CustomPurchaseButton/CustomPurchaseButton";
 import CustomRecommendButton from "../../Components/CustomRecommendButton/CustomRecommendButton";
+import ImageWithFallback from "../../Components/ImageWithFallBack/ImageWithFallBack";
 
 export default function Book() {
     let { id } = useParams();
@@ -40,9 +41,9 @@ export default function Book() {
     return (
         <>
             <Container>
-                <BackButton onClick={() => history.push("/")}>Back</BackButton>
+                <BackButton onClick={() => history.goBack()}>Back</BackButton>
                 <ImageContainer>
-                    <img src={book?.image} alt='err' />
+                    <ImageWithFallback src={book?.image} alt='err'  />
                 </ImageContainer>
 
                 <DataContainer>
@@ -66,11 +67,12 @@ export default function Book() {
                             name='Recommend To Library'
                             {...book}
                         />
-                        <CustomPurchaseButton
+
+                        { user?.userCode < 4 && (<CustomPurchaseButton
                             book_id={id}
                             name='Personal Purchase'
                             title = {book?.title}
-                        />
+                        />)}
                     </ClusterButtons>
                 </DataContainer>
             </Container>

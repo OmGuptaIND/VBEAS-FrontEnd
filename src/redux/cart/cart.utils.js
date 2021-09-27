@@ -7,7 +7,7 @@ const addItemToCart = (existingItem, itemToAdd) => {
                 : item
         );
     } else {
-        return [...existingItem, { ...itemToAdd, quantity: 1 }];
+        return [...existingItem, { ...itemToAdd, quantity: itemToAdd.quantity }];
     }
 };
 

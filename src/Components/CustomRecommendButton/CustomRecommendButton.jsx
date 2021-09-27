@@ -4,15 +4,13 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useState } from "react";
 import { IconButton } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addCartItem } from "../../redux/cart/cart.actions";
 import { toast } from "react-toastify";
 
 export default function CustomRecommendButton({ name, book_id, ...props }) {
     const [active, setActive] = useState(true);
     const [qty, setQty] = useState(1);
-    const cart = useSelector(state => state.cart);
-    let prev = cart?.cartItems.length;
     const dispatch = useDispatch();
     const {expected_price, subject, title, publisher, author, medium, price_denomination } = props;
     const handleAdd = () => {
@@ -113,49 +111,3 @@ const Menu = styled.div`
     display: ${(props) => (props.active ? "inline-block" : "none")};
 `;
 
-const ConfirmContainer = styled.div`
-    padding: 20px 50px 30px 50px;
-    display: grid;
-    place-items: center;
-    background-color: white;
-    position: absolute;
-    border-radius: 10px;
-    top: 20vh;
-    font-size: 22px;
-    @media screen and (max-width : 500px){
-        font-size: 20px;
-        padding: 20px;
-    }
-`;
-
-const ConfirmWrapper = styled.div`
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-`;
-
-const ButtonsCluster = styled.div`
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-evenly;
-    >button{
-        color: blueviolet;
-        font-weight: 500;
-        font-size: 20px;
-        background-color: white;
-        border: none;
-        outline: none;
-        margin: 3px 20px;
-        margin-top: 20px;
-        cursor: pointer;
-        border-radius: 10px;
-        padding: 5px 15px;
-        transition: all 0.2s ease-in;
-        :hover{
-            background-color: blueviolet;
-            color: white;
-        }
-    }
-`;

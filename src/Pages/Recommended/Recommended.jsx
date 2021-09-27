@@ -48,7 +48,7 @@ export default function Recommended() {
                     if (data.code === 200) {
                         setBooks(data.data);
                         setLoading(false);
-                    } else toast.error("Something Went Wrong.");
+                    }
                 })
                 .catch((err) => {
                     toast.error("Something Went Wrong.");
@@ -64,6 +64,7 @@ export default function Recommended() {
                     <Loading />
                 ) : (
                     <>
+                        {currentItems.length === 0 && <div>Nothing Found</div>}
                         {currentItems?.map((item) => (
                             <RecommendationCard key={item?.id} {...item} />
                         ))}

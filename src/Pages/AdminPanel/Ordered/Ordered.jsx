@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import AdminHeading from "../../../Components/AdminHeading/AdminHeading";
 import Loading from "../../../Components/Loading/Loading";
@@ -8,10 +8,7 @@ import { SERVER_LINK } from "../../../Utils/constants";
 
 export default function Ordered() {
     const [subject, setSubject] = useState('');
-    const [loading, setLoading] = useState(false);
-    // useEffect(() => {
-    //     setTimeout(() => setLoading(false), 1200);
-    // }, []);
+    const [loading,] = useState(false);
 
     const handleChange = (e) => {
         const name = e.target.name;

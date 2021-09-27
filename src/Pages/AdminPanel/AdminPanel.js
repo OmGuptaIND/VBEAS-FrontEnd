@@ -1,10 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 import styled from "styled-components";
-import Books from "./Books/Books";
 import Admin from "./Admin";
 import SideBar from "./SideBar";
-import Ordered from "./Ordered/Ordered";
-import ExportDeparment from "./ExportDeparment/ExportDeparment";
 import ExportPersonal from "./ExportPersonal/ExportPersonal";
 import ExportRecommendation from "./ExportRecommendation/ExportRecommendation";
 import ViewBooks from "./ViewBooks/ViewBooks";

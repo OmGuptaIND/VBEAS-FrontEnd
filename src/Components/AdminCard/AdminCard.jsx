@@ -63,23 +63,6 @@ const CardValue = styled.div`
         margin-left: 20px;
     }
 `;
-const ButtonCluster = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-const ButtonDateWise = styled.button`
-    background-color: blue;
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    margin: 0px 10px 10px 10px;
-    cursor: pointer;
-`;
 
 
 

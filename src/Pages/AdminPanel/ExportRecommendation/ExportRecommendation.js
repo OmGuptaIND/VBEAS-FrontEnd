@@ -11,7 +11,6 @@ export default function ExportRecommendation() {
     const [loading, setLoading] = useState(true);
     const [subject, setSubject] = useState("");
     const [seller, setSeller] = useState(0);
-    const [date, setDate] = useState("");
     const [query, setQuery] = useState({});
     useEffect(() => {
         setTimeout(() => setLoading(true), 1200);
@@ -84,7 +83,7 @@ export default function ExportRecommendation() {
                                 ))}
                             </CustomSelect>
                         </DropDownContainer>
-                        {subject.length > 0 && seller == 0 && (
+                        {subject.length > 0 && seller === 0 && (
                             <a
                                 href={`${SERVER_LINK}/api/admin/1/excel/subject/${subject}`}
                                 download>
@@ -94,7 +93,7 @@ export default function ExportRecommendation() {
                             </a>
                         )}
 
-                        {subject.length == 0 && seller > 0 && (
+                        {subject.length === 0 && seller > 0 && (
                             <a
                                 href={`${SERVER_LINK}/api/admin/1/excel/seller/${seller}`}
                                 download>
