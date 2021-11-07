@@ -37,13 +37,20 @@ export default function Book() {
         };
         fetchBook();
     }, []);
+    const handleClick = () => {
+        window.open(book?.link);
+    }
+    const fallback = "https://i.imgur.com/QKiik2o.png";
     if (loading) return <Loading />;
     return (
         <>
             <Container>
                 <BackButton onClick={() => history.goBack()}>Back</BackButton>
                 <ImageContainer>
-                    <ImageWithFallback src={book?.image} alt='err'  />
+                    <img src={book?.image} alt='err' />
+                    <NotAvailable>
+                        <ImageWithFallback src={fallback} alt='err' />
+                    </NotAvailable>
                 </ImageContainer>
 
                 <DataContainer>
@@ -60,7 +67,7 @@ export default function Book() {
                         </Mrp>
                         <Discount>{book?.discount}% off</Discount>
                     </PriceContainer>
-
+                    { book?.link.length > 10 && (<ContentButton onClick = {handleClick} > View Book Content </ContentButton>)}
                     <ClusterButtons>
                         <CustomRecommendButton
                             book_id={id}
@@ -68,11 +75,13 @@ export default function Book() {
                             {...book}
                         />
 
-                        { user?.userCode < 4 && (<CustomPurchaseButton
-                            book_id={id}
-                            name='Personal Purchase'
-                            title = {book?.title}
-                        />)}
+                        {user?.userCode < 4 && (
+                            <CustomPurchaseButton
+                                book_id={id}
+                                name='Personal Purchase'
+                                title={book?.title}
+                            />
+                        )}
                     </ClusterButtons>
                 </DataContainer>
             </Container>
@@ -114,6 +123,7 @@ const BackButton = styled.button`
 const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
+    min-height: 320px;
     max-height: 550px;
     > img {
         width: 100%;
@@ -130,6 +140,21 @@ const ImageContainer = styled.div`
             max-height: 320px;
         }
         max-height: 320px;
+    }
+`;
+
+const NotAvailable = styled.div`
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    z-index: -1;
+    >img{
+        width: 100% ;
+        height: 100%;
+    }
+    @media screen and (max-width : 425px){
+        top: 5%;
+        left: 1%;
     }
 `;
 
@@ -191,4 +216,17 @@ const ClusterButtons = styled.div`
     flex-wrap: wrap;
     width: 100%;
     margin-top: 20px;
+`;
+
+const ContentButton = styled.button`
+    font-size: 20px;
+    padding: 8px 18px;
+    font-weight: 400;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: blueviolet;
+    color: white;
+    margin-bottom: 10px;
+    cursor: pointer;
 `;

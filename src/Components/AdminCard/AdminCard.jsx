@@ -10,7 +10,6 @@ export default function AdminCard({type, heading}) {
             await api.get( `/admin/count/${type}` )
             .then( res => {
                 setData(res.data.data);
-                console.log(data);
             })
             .catch( err => {
                 toast.error("Something went wrong");

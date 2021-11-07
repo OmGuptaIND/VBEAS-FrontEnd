@@ -7,7 +7,6 @@ import ExportRecommendation from "./ExportRecommendation/ExportRecommendation";
 import ViewBooks from "./ViewBooks/ViewBooks";
 
 export default function AdminPanel({match}) {
-    console.log(match);
     return (
         <Container>
             <SideBar match = {match} />

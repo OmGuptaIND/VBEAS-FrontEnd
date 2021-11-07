@@ -1,36 +1,80 @@
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import ImageWithFallback from "../ImageWithFallBack/ImageWithFallBack";
+import Tooltip from "@mui/material/Tooltip";
+import ExternalImg from '../../Images/cart/external.png';
 
 export default function BookCard(props) {
     const history = useHistory();
     const handleClick = () => {
-        history.push(`book/${id}`)
-    }
-    const {price_denomination, publisher, image, subject, title, author, price, expected_price, discount, id, medium, seller_id} = props;
+        history.push(`book/${id}`);
+    };
+    const fallback = "https://i.imgur.com/QKiik2o.png";
+    const {
+        price_denomination,
+        publisher,
+        image,
+        subject,
+        title,
+        author,
+        price,
+        expected_price,
+        discount,
+        id,
+        medium,
+        seller_id,
+        link,
+    } = props;
+    const handleViewContent = () => {
+        window.open(link);
+    };
     return (
-        <Container onClick = {handleClick} >
+        <Container onClick={handleClick}>
             <ImageContainer>
-                <ImageWithFallback src={image} alt='err' />
+                <img src={image} alt='err' />
+                <NotAvailable>
+                    <ImageWithFallback src={fallback} alt='err' />
+                </NotAvailable>
             </ImageContainer>
             <BookDetails>
                 <p>{subject}</p>
-                <h2>{title.length > 42 ? title.substring(0, 40)+'...' : title}</h2>
+                <h2>
+                    {title.length > 42 ? title.substring(0, 40) + "..." : title}
+                </h2>
                 <Author>{author}</Author>
                 <SellerName>
-                    { publisher?.length > 17 ? publisher.substring(0, 17) + '...' : publisher}
+                    {publisher?.length > 17
+                        ? publisher.substring(0, 17) + "..."
+                        : publisher}
                 </SellerName>
                 <YearOfPub>2021</YearOfPub>
                 <PriceContainer>
-                    <Price>{price_denomination} {Math.round(expected_price)}</Price>
-                    <Mrp>{price_denomination} {Math.round(price)}</Mrp>
+                    <Price>
+                        {price_denomination} {Math.round(expected_price)}
+                    </Price>
+                    <Mrp>
+                        {price_denomination} {Math.round(price)}
+                    </Mrp>
                     <Discount>{discount}% off</Discount>
                 </PriceContainer>
+                {link.length > 10 && (<ViewContent onClick={handleViewContent}>
+                    <Tooltip title='View Book Content' arrow>
+                        <img src={ExternalImg} alt='err' />
+                    </Tooltip>
+                </ViewContent>)}
             </BookDetails>
-            {(medium === 'electronic' || seller_id === 3) && (<EbookValue>E-Book</EbookValue>)}
+            {(medium === "electronic" || seller_id === 3) && (
+                <EbookValue>E-Book</EbookValue>
+            )}
         </Container>
     );
 }
+
+const ViewContent = styled.div`
+    position: absolute;
+    top: 0px;
+    right: 10px;
+`;
 
 const Container = styled.div`
     position: relative;
@@ -38,7 +82,7 @@ const Container = styled.div`
     padding: 2px 2px;
     border-radius: 10px;
     transition: all 0.2s ease-in-out;
-    :hover{
+    :hover {
         box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
         cursor: pointer;
     }
@@ -47,17 +91,35 @@ const Container = styled.div`
 const ImageContainer = styled.div`
     width: 100%;
     height: 350px;
+    position: relative;
     > img {
         width: 100%;
         height: 100%;
         object-fit: fill;
         border-radius: 10px;
     }
+    > p {
+        font-size: 20px;
+        font-weight: bold;
+        z-index: -1;
+    }
+`;
+
+const NotAvailable = styled.div`
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    z-index: -1;
+    > img {
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 const BookDetails = styled.div`
     padding: 0px 10px;
     margin-top: 15px;
+    position: relative;
     > p:nth-child(1) {
         color: blueviolet;
         font-size: 16px;
@@ -110,7 +172,6 @@ const Discount = styled.span`
     font-size: 16px;
 `;
 
-
 const EbookValue = styled.p`
     position: absolute;
     top: 10px;
@@ -122,7 +183,7 @@ const EbookValue = styled.p`
     color: orange;
     background-color: blueviolet;
     color: white;
-    z-index:100;
+    z-index: 100;
 `;
 
 const SellerName = styled.div`

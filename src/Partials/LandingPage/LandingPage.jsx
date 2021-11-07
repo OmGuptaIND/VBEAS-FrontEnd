@@ -18,7 +18,7 @@ export default function LandingPage() {
                         VIRTUAL BOOK EXHIBITION & SELECTION <br />{" "}
                         <span> VBEAS - 2021 </span>
                     </Title>
-                    <Date>( 28 <sup>th</sup> Sept. to 6<sup>th</sup> Oct. 2021)</Date>
+                    <Date>( 1 <sup>st</sup> Oct. to 10<sup>th</sup> Oct. 2021)</Date>
 
                     <AboutContainer>
                         <p>
